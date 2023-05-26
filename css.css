@@ -1,0 +1,169 @@
+@font-face {
+    font-family: "Formular";
+    src: url(/fonts/Formular.woff2);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500&display=swap');
+
+body { 
+    margin: 0; 
+    margin: 0px; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 50px;
+    background-color: #181818;
+    font-family: 'Wix Madefor Display', sans-serif;
+    color: #fff;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0px;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+p {
+    margin: 0px;
+    font-size: 18px;
+    color: #d3d3d3;
+}
+
+div {
+    border-radius: 12px;
+}
+
+input {
+    border-radius: 12px;
+}
+
+button {
+    border-radius: 12px;
+    padding: 0px 40px;
+    height: 54px;
+    border: none;
+    background-color: #ffffff;
+    color: #0e0e0e;
+    font-size: 20px;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-weight: 500;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    max-width: 90%;
+    width: 800px;
+}
+
+.pretty-gradient {
+    height: 140px;
+    width: 100%;
+    outline: 1px solid #484848;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+}
+
+.copy-div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0%;
+    transition: 0.3s;
+}
+
+
+
+.copy-div .text-button {
+    color: #fff;
+    height: 54px;
+    padding: 0px 0px;
+    background-color: #181818;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    outline: 1px solid #8d8d8d;
+    transition: 0.3s;
+    user-select: none;
+    width: 270px;
+    
+}
+
+.copy-div .text-button:active {
+    background-color: #464646;
+    transition: 0.3s;
+} 
+
+.copy-div:hover {
+    opacity: 100%;
+    transition: 0.3s;
+}
+
+.gradient {
+    box-sizing: border-box;
+    width: 100%;
+    height: 140px;
+    outline: 1px solid #484848;
+}
+
+
+.settings-block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.indicator {
+    height: 54px;
+    width: 54px;
+    outline: 1px solid #484848;
+    box-sizing: border-box;
+}
+.settings-block input {
+    width: 240px;
+    border: none;
+    box-sizing: border-box;
+    color: #fff;
+    height: 54px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #2a2a2a;
+    text-transform: uppercase;
+    outline: 1px solid #484848;
+}
+
+#angleInput {
+    width: 100px;
+}
