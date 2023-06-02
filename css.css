@@ -154,8 +154,24 @@ button:hover {
     width: 54px;
     outline: 1px solid #484848;
     box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.settings-block input {
+
+#firstColorIndicator {
+    /* height: 100px;
+    min-width: 100px !important; */
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.settings-block .input {
     width: 240px;
     border: none;
     box-sizing: border-box;
@@ -168,6 +184,64 @@ button:hover {
     outline: 1px solid #484848;
 }
 
+.input-div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.angle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#labelLeftInput {
+    color: #ffffff30;
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 100;
+    pointer-events: none;
+    transition: 0.2s ease all; 
+    opacity: 100%;
+}
+
+#labelRightInput {
+    color: #ffffff30;
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 18px;
+    pointer-events: none;
+    transition: 0.2s ease all; 
+    opacity: 100%;
+}
+
+.hidden {
+    opacity: 0% !important;
+}
+
+#labelAngleInput {
+    color: #ffffff30;
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 18px;
+    pointer-events: none;
+    transition: 0.2s ease all; 
+    opacity: 100%;
+}
+
 #angleInput {
     width: 100px;
+    border: none;
+    box-sizing: border-box;
+    color: #fff;
+    height: 54px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #2a2a2a;
+    text-transform: uppercase;
+    outline: 1px solid #484848;
 }

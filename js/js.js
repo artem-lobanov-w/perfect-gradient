@@ -66,7 +66,42 @@ const firstColorIndicator = document.getElementById('firstColorIndicator');
 const midColorIndicator = document.getElementById('midColorIndicator');
 const finiteColorIndicator = document.getElementById('secondColorIndicator');
 const angleInput = document.getElementById('angleInput');
+const firstInputPiker = document.getElementById('firstColorIndicator');
+const labelLeftInput = document.getElementById('labelLeftInput');
+const labelRightInput = document.getElementById('labelRightInput');
+// const secondInputPiker = document.getElementById('secondColorIndicator');
+// console.log(firstInputPiker.value);
 let midCol;
+
+
+startInputElement.addEventListener('focus', () => {
+	labelLeftInput.classList.add('hidden');
+})
+startInputElement.addEventListener('blur', () => {
+	if(!startInputElement.value) {
+		labelLeftInput.classList.remove('hidden');
+	}
+})
+
+finiteInputElement.addEventListener('focus', () => {
+	labelRightInput.classList.add('hidden');
+})
+finiteInputElement.addEventListener('blur', () => {
+	if(!finiteInputElement.value) {
+		labelRightInput.classList.remove('hidden');
+	}
+})
+
+angleInput.addEventListener('focus', () => {
+	labelAngleInput.classList.add('hidden');
+})
+angleInput.addEventListener('blur', () => {
+	if(!angleInput.value) {
+		labelAngleInput.classList.remove('hidden');
+	}
+})
+
+
 function processInput() {
 	requestAnimationFrame(processInput);
 	startInputValue = startInputElement.value;
@@ -76,7 +111,7 @@ function processInput() {
 	angleGradient = angleInput.value;
 	if (angleGradient.trim() !== '' && parseFloat(angleGradient) !== NaN) {
 		angle = 90 + Number(angleGradient);
-		console.log(angleGradient);
+		// console.log(angleGradient);
 	} else if (angleGradient.trim() === '') {
 		angle = 90;
 	}
@@ -173,6 +208,6 @@ prettyGradient.addEventListener('click', () => {
 
 	button.style.backgroundColor = '#464646';
 	button.style.transitionDuration = '0.3s';
-	});
+});
 
 
