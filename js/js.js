@@ -63,17 +63,15 @@ let angle = 90;
 const startInputElement = document.getElementById('startInputColor');
 const finiteInputElement = document.getElementById('finiteInputColor');
 const firstColorIndicator = document.getElementById('firstColorIndicator');
-const midColorIndicator = document.getElementById('midColorIndicator');
+// const midColorIndicator = document.getElementById('midColorIndicator');
 const finiteColorIndicator = document.getElementById('secondColorIndicator');
 const angleInput = document.getElementById('angleInput');
-const firstInputPiker = document.getElementById('firstColorIndicator');
+// const firstInputPiker = document.getElementById('firstColorIndicator');
 const labelLeftInput = document.getElementById('labelLeftInput');
 const labelRightInput = document.getElementById('labelRightInput');
-// const secondInputPiker = document.getElementById('secondColorIndicator');
-// console.log(firstInputPiker.value);
 let midCol;
 
-
+// Скрывает Label
 startInputElement.addEventListener('focus', () => {
 	labelLeftInput.classList.add('hidden');
 })
@@ -82,7 +80,6 @@ startInputElement.addEventListener('blur', () => {
 		labelLeftInput.classList.remove('hidden');
 	}
 })
-
 finiteInputElement.addEventListener('focus', () => {
 	labelRightInput.classList.add('hidden');
 })
@@ -91,7 +88,6 @@ finiteInputElement.addEventListener('blur', () => {
 		labelRightInput.classList.remove('hidden');
 	}
 })
-
 angleInput.addEventListener('focus', () => {
 	labelAngleInput.classList.add('hidden');
 })
@@ -101,61 +97,103 @@ angleInput.addEventListener('blur', () => {
 	}
 })
 
+function fixInputColor(InputValue) {
+	let fixColor;
+	let newColorArray = [];
+	if(InputValue.split('').length==3) {
+		fixColor = InputValue.split('');
+		for(let i = 0; i < 3; i++) {
+			newColorArray.push(fixColor[i]);
+			newColorArray.push(fixColor[i]);
+		}
+		fixColor = newColorArray.join('');
+	} else {
+		fixColor = InputValue;
+	}
+	return fixColor;
+}
 
-function processInput() {
-	requestAnimationFrame(processInput);
-	startInputValue = startInputElement.value;
-	finiteInputValue = finiteInputElement.value;
-	startInputValue2 = startInputValue;
-	finiteInputValue2 = finiteInputValue;
-	angleGradient = angleInput.value;
+firstColorIndicator.style.backgroundColor = '#fff';
+finiteColorIndicator.style.backgroundColor = '#000';
+gradient.style.background = 'linear-gradient(' + angle + 'deg, hsl(0, 0%, 100%), hsl(0, 0%, 0%))';
+prettyGradient.style.background = 'linear-gradient(' + angle + 'deg, hsl(0, 0%, 100%), hsl(0, 0%, 0%))';
+angle = 0;
+
+function processInput(startInputValue, finiteInputValue,angle) {
+	if(finiteInputElement.value !== '') {
+		labelRightInput.classList.add('hidden');
+	} else if(startInputElement.value !== '') {
+		labelLeftInput.classList.add('hidden');
+	} else if(finiteInputElement.value === ''){
+		finiteInputValue = '000000';
+	}
+
+	angleGradient = String(angle);
 	if (angleGradient.trim() !== '' && parseFloat(angleGradient) !== NaN) {
 		angle = 90 + Number(angleGradient);
-		// console.log(angleGradient);
 	} else if (angleGradient.trim() === '') {
 		angle = 90;
 	}
-	
-	firstColorIndicator.style.backgroundColor = hexToHSL(startInputValue).hsl ;
-	finiteColorIndicator.style.backgroundColor = hexToHSL(finiteInputValue).hsl;
+	firstColorIndicator.value = '#' + fixInputColor(startInputValue);
+	finiteColorIndicator.value = '#' + fixInputColor(finiteInputValue);
 	gradient.style.background = 'linear-gradient(' + angle + 'deg,' + hexToHSL(startInputValue).hsl + ',' + hexToHSL(finiteInputValue).hsl + ')';
 	prettyGradient.style.background = 'linear-gradient(' + angle + 'deg,' + hexToHSL(startInputValue).hsl + ',' + midColorNew() + '50%,' + hexToHSL(finiteInputValue).hsl + ')';
 	
 	if (startInputValue.trim() === '' && finiteInputValue.trim() === '') {
-		firstColorIndicator.style.backgroundColor = '#fff';
-		finiteColorIndicator.style.backgroundColor = '#000';
-		gradient.style.background = 'linear-gradient(' + angle + 'deg, hsl(0, 0%, 100%), hsl(0, 0%, 0%))';
-		prettyGradient.style.background = 'linear-gradient(' + angle + 'deg, hsl(0, 0%, 100%), hsl(0, 0%, 0%))';
 	} else if(startInputValue.trim() === '') {
 		firstColorIndicator.style.backgroundColor = '#fff';
 		gradient.style.background = 'linear-gradient(' + angle + 'deg, hsl(0, 0%, 100%),' + hexToHSL(finiteInputValue).hsl + ')';
 		prettyGradient.style.background = 'linear-gradient(' + angle + 'deg, hsl(0, 0%, 100%),' + hexToHSL(finiteInputValue).hsl + ')';
 	} 
-
-	const color1 = hexToHSL(startInputValue).rgb;
-	
-	const color2 = hexToHSL(finiteInputValue).rgb;
-	// midColorIndicator.style.backgroundColor = findMidColor(color1, color2);
 }
-processInput();
 
+function fixInputColorIndicator(InputValue,colorIndicatorValue) {
+	InputValue = colorIndicatorValue.value;
+	InputValue = InputValue.split('');
+	InputValue.splice(0,1);
+	return InputValue.join('');
+}
 
-function findMidColor(color1, color2) {
-	const r1 = parseInt(color1[0], 10);
-	const g1 = parseInt(color1[1], 10);
-	const b1 = parseInt(color1[2], 10);
+firstColorIndicator.addEventListener('input', () => {
+	startInputElement.value = fixInputColorIndicator(startInputValue,firstColorIndicator);
+	processInput(startInputValue,finiteInputValue,angle);
+});
+startInputElement.addEventListener('input', () => {
+	startInputValue = startInputElement.value;
+	if(startInputValue == '') {
+		startInputValue = 'ffffff';
+	}
+	processInput(startInputValue,finiteInputValue,angle);
+});
+finiteColorIndicator.addEventListener('input', () => {
+	finiteInputElement.value = fixInputColorIndicator(finiteInputValue,finiteColorIndicator);
+	processInput(startInputValue,finiteInputValue,angle);
+});
+finiteInputElement.addEventListener('input', () => {
+	finiteInputValue = finiteInputElement.value;
+	processInput(startInputValue,finiteInputValue,angle);
+});
+angleInput.addEventListener('input', () => {
+	angle = angleInput.value;
+	processInput(startInputValue,finiteInputValue,angle);
+});
+
+// function findMidColor(color1, color2) {
+// 	const r1 = parseInt(color1[0], 10);
+// 	const g1 = parseInt(color1[1], 10);
+// 	const b1 = parseInt(color1[2], 10);
   
-	const r2 = parseInt(color2[0], 10);
-	const g2 = parseInt(color2[1], 10);
-	const b2 = parseInt(color2[2], 10);
+// 	const r2 = parseInt(color2[0], 10);
+// 	const g2 = parseInt(color2[1], 10);
+// 	const b2 = parseInt(color2[2], 10);
 	
   
-	const midR = Math.round(r1 + (r2 - r1) / 2);
-	const midG = Math.round(g1 + (g2 - g1) / 2);
-	const midB = Math.round(b1 + (b2 - b1) / 2);
+// 	const midR = Math.round(r1 + (r2 - r1) / 2);
+// 	const midG = Math.round(g1 + (g2 - g1) / 2);
+// 	const midB = Math.round(b1 + (b2 - b1) / 2);
   
-	return 'rgb(' + midR + ', ' + midG + ', ' + midB + ')';
-}
+// 	return 'rgb(' + midR + ', ' + midG + ', ' + midB + ')';
+// }
 
 function midColorNew() {
 	const startH = hexToHSL(startInputValue).h;
