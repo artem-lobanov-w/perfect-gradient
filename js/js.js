@@ -190,6 +190,7 @@ firstColorIndicator.addEventListener('input', () => {
 	startInputElement.value = fixInputHashtag(firstColorIndicator);
 	startInputValue = startInputElement.value;
 	processInput(startInputValue,finiteInputValue,angle);
+	labelLeftInput.classList.add('hidden');
 });
 startInputElement.addEventListener('input', () => {
 	startInputValue = startInputElement.value;
@@ -203,6 +204,7 @@ finiteColorIndicator.addEventListener('input', () => {
 	finiteInputElement.value = fixInputHashtag(finiteColorIndicator);
 	finiteInputValue = finiteInputElement.value;
 	processInput(startInputValue,finiteInputValue,angle);
+	labelRightInput.classList.add('hidden');
 });
 finiteInputElement.addEventListener('input', () => {
 	finiteInputValue = finiteInputElement.value;
