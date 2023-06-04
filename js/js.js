@@ -211,7 +211,23 @@ finiteInputElement.addEventListener('input', () => {
 	processInput(startInputValue,finiteInputValue,angle);
 });
 angleInput.addEventListener('input', () => {
+	let newAngleArray = [];
+	let angleConst = angleInput.value;
+	console.log('angleInput.value = ' + angleInput.value);
 	angle = angleInput.value;
+	let angleArray = angle.split('');
+	for(let i = 0; i < angleArray.length; i++) {
+		if(!isNaN(Number(angleArray[i]))) {
+			newAngleArray.push(angleArray[i]);
+		}
+	}
+	angle = newAngleArray.join('');
+	angle = Number(angle);
+	console.log(angle);
+	angleInput.value = angle;
+	if(angleConst == '') {
+		angleInput.value = '';
+	}
 	processInput(startInputValue,finiteInputValue,angle);
 });
 
