@@ -92,14 +92,9 @@ document.addEventListener('click', (e) => {
 		manual.classList.remove('hidden-manual');
 		setTimeout(() => {manual.classList.remove('hidden');}, 0);
 		manualOpen = true;
-			console.log(e.target.id);
-			console.log(manualOpen);
 	} else if(manualOpen == true && e.target.id == 'closeManualButton' || e.target.id != 'manual' && e.target.tagName != 'OL' && e.target.tagName != 'LI' && e.target.tagName != 'A') {
 		closeManual();
-		console.log(e.target.id);
-		console.log(manualOpen);
 	}
-	console.log(e.target.tagName);
 })
 
 function closeManual() {
