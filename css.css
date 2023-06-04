@@ -26,7 +26,6 @@ body {
 }
 
 h1 {
-    /* text-transform: uppercase; */
     font-size: 50px;
     font-weight: 600;
     letter-spacing: 2px;
@@ -75,7 +74,6 @@ a {
 #manual {
     position: absolute;
     top: 30px;
-    /* left: 20px; */
     background-color: #2a2a2a;
     padding: 20px 30px 20px 20px;
     width: 300px;
@@ -92,7 +90,6 @@ a {
 
 #buttonGradientManual {
     margin-left: 10px;
-    /* left: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,7 +120,6 @@ a {
 #buttonGradientBg {
     position: absolute;
     top: 50px;
-    /* left: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -284,7 +280,6 @@ button:hover {
     font-size: 20px;
     text-align: center;
     background-color: #2a2a2a;
-    text-transform: uppercase;
     font-family: 'SANTELLO', sans-serif;
     outline: 1px solid #484848;
 }
@@ -306,7 +301,6 @@ button:hover {
 #labelLeftInput {
     color: #ffffff30;
     position: absolute;
-    text-transform: uppercase;
     font-size: 18px;
     font-weight: 100;
     pointer-events: none;
@@ -317,7 +311,6 @@ button:hover {
 #labelRightInput {
     color: #ffffff30;
     position: absolute;
-    text-transform: uppercase;
     font-size: 18px;
     pointer-events: none;
     transition: 0.2s ease all; 
@@ -336,7 +329,6 @@ button:hover {
 #labelAngleInput {
     color: #ffffff30;
     position: absolute;
-    text-transform: uppercase;
     font-size: 18px;
     pointer-events: none;
     transition: 0.2s ease all; 

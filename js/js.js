@@ -63,7 +63,6 @@ let angle = 90;
 const startInputElement = document.getElementById('startInputColor');
 const finiteInputElement = document.getElementById('finiteInputColor');
 const firstColorIndicator = document.getElementById('firstColorIndicator');
-// const midColorIndicator = document.getElementById('midColorIndicator');
 const finiteColorIndicator = document.getElementById('secondColorIndicator');
 const angleInput = document.getElementById('angleInput');
 const firstInputPiker = document.getElementById('firstColorIndicator');
@@ -218,23 +217,6 @@ angleInput.addEventListener('input', () => {
 	angle = angleInput.value;
 	processInput(startInputValue,finiteInputValue,angle);
 });
-
-// function findMidColor(color1, color2) {
-// 	const r1 = parseInt(color1[0], 10);
-// 	const g1 = parseInt(color1[1], 10);
-// 	const b1 = parseInt(color1[2], 10);
-  
-// 	const r2 = parseInt(color2[0], 10);
-// 	const g2 = parseInt(color2[1], 10);
-// 	const b2 = parseInt(color2[2], 10);
-	
-  
-// 	const midR = Math.round(r1 + (r2 - r1) / 2);
-// 	const midG = Math.round(g1 + (g2 - g1) / 2);
-// 	const midB = Math.round(b1 + (b2 - b1) / 2);
-  
-// 	return 'rgb(' + midR + ', ' + midG + ', ' + midB + ')';
-// }
 
 function midColorNew() {
 	const startH = hexToHSL(startInputValue).h;
