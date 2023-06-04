@@ -3,6 +3,10 @@
     src: url(/fonts/Formular.woff2);
 }
 
+@font-face {
+    font-family: "SANTELLO";
+    src: url(/fonts/SANTELLO.woff);
+}
 @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500&display=swap');
 
 body { 
@@ -16,14 +20,15 @@ body {
     height: 100vh;
     gap: 50px;
     background-color: #181818;
-    font-family: 'Wix Madefor Display', sans-serif;
+    font-family: 'SANTELLO', sans-serif;
+    font-weight: 200;
     color: #fff;
 }
 
 h1 {
-    text-transform: uppercase;
-    font-size: 40px;
-    font-weight: 800;
+    /* text-transform: uppercase; */
+    font-size: 50px;
+    font-weight: 600;
     letter-spacing: 2px;
     margin: 0px;
 }
@@ -50,6 +55,94 @@ input {
     border-radius: 12px;
 }
 
+ol {
+    padding-left: 20px;
+    margin: 0px;
+    padding-top: 20px;
+}
+
+li {
+    font-size: 14px;
+    line-height: 120%;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #fff;
+}
+
+#manual {
+    position: absolute;
+    top: 30px;
+    /* left: 20px; */
+    background-color: #2a2a2a;
+    padding: 20px 30px 20px 20px;
+    width: 300px;
+    outline: 1px solid #484848;
+    transition: 0.2s ease all; 
+    box-shadow: 10px 10px 27px rgba(0, 0, 0, 0.2);
+    opacity: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonGradientManual {
+    margin-left: 10px;
+    /* left: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    width: 152px;
+    background: linear-gradient(140deg, hsl(0, 100%, 50%) 0%, hsl(60, 100%, 50%) 16.67%, hsl(120, 100%, 50%) 35.42%, hsl(180, 100%, 50%) 52.08%, hsl(240, 100%, 50%) 68.75%, hsl(300, 100%, 50%) 83.85%, hsl(0, 100%, 50%) 100%);
+    cursor: pointer;
+}
+
+#buttonOpenManual {
+    height: 44px;
+    width: 150px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #181818;
+    padding: 0px;
+}
+
+#closeManualButton {
+    height: 44px;
+    width: 150px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #181818;
+    padding: 0px;
+}
+
+#buttonGradientBg {
+    position: absolute;
+    top: 50px;
+    /* left: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    width: 152px;
+    background: linear-gradient(140deg, hsl(0, 100%, 50%) 0%, hsl(60, 100%, 50%) 16.67%, hsl(120, 100%, 50%) 35.42%, hsl(180, 100%, 50%) 52.08%, hsl(240, 100%, 50%) 68.75%, hsl(300, 100%, 50%) 83.85%, hsl(0, 100%, 50%) 100%);
+    cursor: pointer;
+    z-index: 1;
+}
+
+#buttonGradientBg button {
+    height: 44px;
+    width: 150px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #181818;
+    padding: 0px;
+}
+
 button {
     border-radius: 12px;
     padding: 0px 40px;
@@ -58,7 +151,7 @@ button {
     background-color: #ffffff;
     color: #0e0e0e;
     font-size: 20px;
-    font-family: 'Wix Madefor Display', sans-serif;
+    font-family: 'SANTELLO', sans-serif;
     font-weight: 500;
 }
 
@@ -192,6 +285,7 @@ button:hover {
     text-align: center;
     background-color: #2a2a2a;
     text-transform: uppercase;
+    font-family: 'SANTELLO', sans-serif;
     outline: 1px solid #484848;
 }
 
@@ -232,6 +326,11 @@ button:hover {
 
 .hidden {
     opacity: 0% !important;
+    transition: 0.2s ease all; 
+}
+
+.hidden-manual {
+    display: none !important;
 }
 
 #labelAngleInput {

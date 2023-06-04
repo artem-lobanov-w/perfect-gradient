@@ -69,7 +69,45 @@ const angleInput = document.getElementById('angleInput');
 const firstInputPiker = document.getElementById('firstColorIndicator');
 const labelLeftInput = document.getElementById('labelLeftInput');
 const labelRightInput = document.getElementById('labelRightInput');
+const buttonGradientBg = document.getElementById('buttonGradientBg');
+const manual = document.getElementById('manual');
+const closeManualButton = document.getElementById('closeManualButton');
+const buttonGradientManual = document.getElementById('buttonGradientManual');
+const buttonOpenManual = document.getElementById('buttonOpenManual');
+
 let midCol;
+
+let angleGradientButton = 0;
+function buttonAnimate() {
+	requestAnimationFrame(buttonAnimate);
+	buttonGradientBg.style.background = 'conic-gradient(from ' + angleGradientButton + 'deg at 49.92% 50%, ' + hexToHSL(startInputValue).hsl + ' 0%, ' + midColorNew() + ' 25%, '  + hexToHSL(finiteInputValue).hsl + ' 50%, ' + midColorNew() + ' 75%, ' + hexToHSL(startInputValue).hsl + ' 100%)';
+	buttonGradientManual.style.background = 'conic-gradient(from ' + angleGradientButton + 'deg at 49.92% 50%, ' + hexToHSL(startInputValue).hsl + ' 0%, ' + midColorNew() + ' 25%, '  + hexToHSL(finiteInputValue).hsl + ' 50%, ' + midColorNew() + ' 75%, ' + hexToHSL(startInputValue).hsl + ' 100%)';
+	angleGradientButton += 0.5;
+}
+buttonAnimate();
+
+let manualOpen = false;
+
+document.addEventListener('click', (e) => {
+	if(manualOpen == false && e.target.id == 'buttonOpenManual') {
+		manual.classList.remove('hidden-manual');
+		setTimeout(() => {manual.classList.remove('hidden');}, 0);
+		manualOpen = true;
+			console.log(e.target.id);
+			console.log(manualOpen);
+	} else if(manualOpen == true && e.target.id == 'closeManualButton' || e.target.id != 'manual' && e.target.tagName != 'OL' && e.target.tagName != 'LI' && e.target.tagName != 'A') {
+		closeManual();
+		console.log(e.target.id);
+		console.log(manualOpen);
+	}
+	console.log(e.target.tagName);
+})
+
+function closeManual() {
+	manual.classList.add('hidden');
+	setTimeout(() => {manual.classList.add('hidden-manual');}, 0);
+	manualOpen = false;
+}
 
 // Скрывает Label
 startInputElement.addEventListener('focus', () => {
@@ -147,7 +185,7 @@ function processInput(startInputValue, finiteInputValue,angle) {
 	} 
 }
 
-function fixInputColorIndicator(colorIndicatorValue) {
+function fixInputHashtag(colorIndicatorValue) {
 	let InputValue = colorIndicatorValue.value;
 	InputValue = InputValue.split('');
 	InputValue.splice(0,1);
@@ -155,19 +193,20 @@ function fixInputColorIndicator(colorIndicatorValue) {
 }
 
 firstColorIndicator.addEventListener('input', () => {
-	startInputElement.value = fixInputColorIndicator(firstColorIndicator);
+	startInputElement.value = fixInputHashtag(firstColorIndicator);
 	startInputValue = startInputElement.value;
 	processInput(startInputValue,finiteInputValue,angle);
 });
 startInputElement.addEventListener('input', () => {
 	startInputValue = startInputElement.value;
+	// startInputValue = fixInputHashtag(startInputValue);
 	if(startInputValue == '') {
 		startInputValue = 'ffffff';
 	}
 	processInput(startInputValue,finiteInputValue,angle);
 });
 finiteColorIndicator.addEventListener('input', () => {
-	finiteInputElement.value = fixInputColorIndicator(finiteColorIndicator);
+	finiteInputElement.value = fixInputHashtag(finiteColorIndicator);
 	finiteInputValue = finiteInputElement.value;
 	processInput(startInputValue,finiteInputValue,angle);
 });
@@ -249,5 +288,4 @@ prettyGradient.addEventListener('click', () => {
 	button.style.backgroundColor = '#464646';
 	button.style.transitionDuration = '0.3s';
 });
-
 
