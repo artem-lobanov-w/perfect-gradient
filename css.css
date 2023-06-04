@@ -1,13 +1,8 @@
-@font-face {
-    font-family: "Formular";
-    src: url(/fonts/Formular.woff2);
-}
 
 @font-face {
     font-family: "SANTELLO";
-    src: url(/fonts/SANTELLO.woff);
+    src: url(SANTELLO.woff) format('truetype');
 }
-@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500&display=swap');
 
 body { 
     margin: 0; 
