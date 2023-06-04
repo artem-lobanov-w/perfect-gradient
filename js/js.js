@@ -66,7 +66,7 @@ const firstColorIndicator = document.getElementById('firstColorIndicator');
 // const midColorIndicator = document.getElementById('midColorIndicator');
 const finiteColorIndicator = document.getElementById('secondColorIndicator');
 const angleInput = document.getElementById('angleInput');
-// const firstInputPiker = document.getElementById('firstColorIndicator');
+const firstInputPiker = document.getElementById('firstColorIndicator');
 const labelLeftInput = document.getElementById('labelLeftInput');
 const labelRightInput = document.getElementById('labelRightInput');
 let midCol;
@@ -147,15 +147,16 @@ function processInput(startInputValue, finiteInputValue,angle) {
 	} 
 }
 
-function fixInputColorIndicator(InputValue,colorIndicatorValue) {
-	InputValue = colorIndicatorValue.value;
+function fixInputColorIndicator(colorIndicatorValue) {
+	let InputValue = colorIndicatorValue.value;
 	InputValue = InputValue.split('');
 	InputValue.splice(0,1);
 	return InputValue.join('');
 }
 
 firstColorIndicator.addEventListener('input', () => {
-	startInputElement.value = fixInputColorIndicator(startInputValue,firstColorIndicator);
+	startInputElement.value = fixInputColorIndicator(firstColorIndicator);
+	startInputValue = startInputElement.value;
 	processInput(startInputValue,finiteInputValue,angle);
 });
 startInputElement.addEventListener('input', () => {
@@ -166,7 +167,8 @@ startInputElement.addEventListener('input', () => {
 	processInput(startInputValue,finiteInputValue,angle);
 });
 finiteColorIndicator.addEventListener('input', () => {
-	finiteInputElement.value = fixInputColorIndicator(finiteInputValue,finiteColorIndicator);
+	finiteInputElement.value = fixInputColorIndicator(finiteColorIndicator);
+	finiteInputValue = finiteInputElement.value;
 	processInput(startInputValue,finiteInputValue,angle);
 });
 finiteInputElement.addEventListener('input', () => {
